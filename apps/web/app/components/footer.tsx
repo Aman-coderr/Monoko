@@ -34,7 +34,7 @@ export default function FooterSection() {
           {/* Quick Links */}
           <div>
             <h4 className="uppercase text-xs tracking-wider text-gray-400 mb-4">
-              $Quick Links
+              Quick Links
             </h4>
 
             <div className="flex flex-wrap gap-2">
