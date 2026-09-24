@@ -28,7 +28,8 @@ export default function TeamSection() {
   return (
     <section
       ref={wrapperRef}
-      className="relative"
+      id="about"
+      className="relative scroll-mt-24"
       style={{ height: "200vh" }}
     >
       <div className="sticky top-0 bg-[#F7F3EF] lg:flex lg:h-screen lg:items-center lg:overflow-y-auto">

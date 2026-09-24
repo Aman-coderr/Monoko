@@ -21,7 +21,7 @@ const socialIcons = [
 
 export default function ContactSection() {
   return (
-    <section className="bg-[#F4F1ED] px-5 md:px-16 py-12 md:py-20">
+    <section id="contact" className="bg-[#F4F1ED] px-5 md:px-16 py-12 md:py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10">
           {/* Left */}

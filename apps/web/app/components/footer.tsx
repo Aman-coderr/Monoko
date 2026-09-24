@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const socialIcons = [
   {
     label: "Facebook",
@@ -39,19 +41,29 @@ export default function FooterSection() {
 
             <div className="flex flex-wrap gap-2">
               {[
-                "Home",
-                "About",
-                "Works",
-                "Contact",
-                "Services",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="text-[10px] bg-white text-black px-3 py-1 rounded-full"
-                >
-                  {item}
-                </span>
-              ))}
+                { label: "Home", href: "/" },
+                { label: "About", href: "/#about" },
+                { label: "Works", href: null },
+                { label: "Contact", href: "/#contact" },
+                { label: "Services", href: "/#services" },
+              ].map((item) =>
+                item.href ? (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className="text-[10px] bg-white text-black px-3 py-1 rounded-full transition hover:scale-105 inline-block"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <span
+                    key={item.label}
+                    className="text-[10px] bg-white text-black px-3 py-1 rounded-full"
+                  >
+                    {item.label}
+                  </span>
+                )
+              )}
             </div>
           </div>
 
