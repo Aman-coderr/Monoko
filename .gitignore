@@ -25,6 +25,9 @@ coverage
 .next/
 out/
 build
+
+# Cloudflare / Wrangler
+.wrangler/
 dist
 
 
