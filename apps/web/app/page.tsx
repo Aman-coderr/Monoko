@@ -5,7 +5,6 @@ import { useRef } from "react";
 import RevealText from "./components/revealtext";
 import TeamSection from "./components/TeamSection/TeamSection";
 import ServicesSection from "./components/servicerevealtext";
-import ServicesCardsSection from "./components/ServicesCardsSection";
 import AISystemsSection from "./components/AISystemsSection";
 import ServicesListSection from "./components/servicesSection";
 import ContactSection from "./components/contactSection";

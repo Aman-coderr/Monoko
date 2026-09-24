@@ -59,13 +59,13 @@ export default function TeamSection() {
                 transformStyle: "preserve-3d",
                 perspective: 1200,
               }}
-              className="float-right ml-4 mb-4 flex justify-center lg:float-none lg:ml-0 lg:mb-0"
+              className="float-right ml-4 mb-4 flex justify-center lg:order-2 lg:float-none lg:ml-0 lg:mb-0"
             >
               <Image
                 src={member.image}
                 width={420}
                 height={560}
-                className="rounded-2xl object-cover aspect-[2/4] w-[120px] sm:w-[180px] md:w-[260px] lg:aspect-auto lg:w-[420px] h-auto lg:rounded-[32px]"
+                className="rounded-2xl object-cover aspect-[2/4] w-[120px] sm:w-[180px] md:w-[260px] lg:aspect-auto lg:w-full h-auto lg:rounded-[32px]"
                 alt={member.name}
               />
             </motion.div>
@@ -80,8 +80,9 @@ export default function TeamSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: .8 }}
+              className="lg:order-1"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
                 HEY<span className="text-orange-500">!</span>
               </h1>
 
@@ -105,7 +106,7 @@ export default function TeamSection() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: .8 }}
-              className="flex flex-col justify-center"
+              className="flex flex-col justify-center lg:order-3"
             >
               <p className="text-[13px] sm:text-sm md:text-base lg:text-lg leading-5 sm:leading-7 md:leading-9 text-neutral-700">
                 {member.right}
