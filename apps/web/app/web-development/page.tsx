@@ -4,7 +4,7 @@ import { websiteDevelopmentData as data } from "./data";
 export default function WebsiteDevelopmentPage() {
   return (
     <main className="bg-[#f3f1ef] text-black">
-      <div className="mx-auto max-w-7xl px-5 py-12 lg:px-10">
+      <div className="mx-auto max-w-7xl px-5 pt-24 pb-6 lg:px-10 md:pb-8">
         {/* Breadcrumb */}
         <div className="mb-10 text-sm md:text-base">
           <span className="text-gray-500">{data.breadcrumb.parent}</span>
@@ -16,17 +16,17 @@ export default function WebsiteDevelopmentPage() {
 
         {/* Hero */}
         <section className="grid gap-10 lg:grid-cols-2 lg:items-end">
-          <h1 className="max-w-2xl text-4xl font-semibold leading-tight md:text-6xl">
+          <h1 className="max-w-2xl text-4xl font-semibold leading-none md:text-6xl">
             {data.hero.title}
           </h1>
 
-          <p className="max-w-md text-sm uppercase leading-relaxed text-gray-700 lg:justify-self-end">
+          <p className="max-w-md text-base uppercase leading-relaxed text-black font-semibold lg:justify-self-end">
             {data.hero.description}
           </p>
         </section>
 
         {/* Process */}
-        <section className="mt-24">
+        <section className="mt-6 md:mt-8">
           <h2 className="mb-14 text-center text-2xl font-medium text-gray-500 md:text-4xl">
             {data.processTitle}
           </h2>
@@ -53,7 +53,7 @@ export default function WebsiteDevelopmentPage() {
         </section>
 
         {/* Featured Projects */}
-        <section className="mt-28">
+        <section className="mt-6 md:mt-8">
           <h2 className="mb-14 text-center text-2xl font-medium text-gray-500 md:text-4xl">
             {data.featuredProjectsTitle}
           </h2>

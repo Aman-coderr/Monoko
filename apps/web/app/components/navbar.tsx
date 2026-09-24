@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef, useState } from "react";
-import { motion, type Variants } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
@@ -12,31 +12,34 @@ const menuItems = [
   { title: "AI Automation", href: "/ai-automation" },
 ];
 
+// Open: links slide in from the left, top to bottom (after height starts growing).
+// Close: links fade out fast, bottom to top, before the box collapses.
 const listVariants: Variants = {
-  hidden: {},
+  hidden: { transition: { staggerChildren: 0.03, staggerDirection: -1 } },
   show: { transition: { staggerChildren: 0.05, delayChildren: 0.12 } },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: -8 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.2, ease: "easeOut" } },
+  hidden: { opacity: 0, x: -12, transition: { duration: 0.12 } },
+  show: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
 };
 
-const PILL_HEIGHT = 48;
-const PILL_RADIUS = 24;
-const PANEL_RADIUS = 28;
+const HEADER_HEIGHT = 48;
+const PILL_RADIUS = 12;
+const PANEL_RADIUS = 16;
+const SPRING = { type: "spring", stiffness: 300, damping: 32, mass: 0.6 } as const;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [panelHeight, setPanelHeight] = useState(PILL_HEIGHT);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const [fullHeight, setFullHeight] = useState(HEADER_HEIGHT);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  // Panel is always mounted (just faded out), so we can measure its real
-  // height at any time — and stay correct across breakpoints via ResizeObserver.
+  // Content (header + links) is always mounted, so we can measure its full
+  // height at any time. ResizeObserver keeps it correct across breakpoints.
   useLayoutEffect(() => {
-    const el = panelRef.current;
+    const el = contentRef.current;
     if (!el) return;
-    const update = () => setPanelHeight(el.offsetHeight);
+    const update = () => setFullHeight(el.offsetHeight);
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
@@ -44,81 +47,68 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-2 left-0 right-0 z-50 flex justify-center">
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center">
       <motion.div
-        initial={{ height: PILL_HEIGHT, borderRadius: PILL_RADIUS }}
+        initial={{ height: HEADER_HEIGHT, borderRadius: PILL_RADIUS }}
         animate={{
-          height: open ? panelHeight : PILL_HEIGHT,
+          height: open ? fullHeight : HEADER_HEIGHT,
           borderRadius: open ? PANEL_RADIUS : PILL_RADIUS,
+          // Close: wait for the links to fade out, then collapse.
+          transition: open ? SPRING : { ...SPRING, delay: 0.12 },
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 32, mass: 0.6 }}
-        className="relative w-[230px] sm:w-[270px] lg:w-[330px] bg-black shadow-lg overflow-hidden"
+        className="w-[75%] lg:w-[330px] bg-black overflow-hidden"
       >
-        {/* Pill — overlaid on top, only visible when closed */}
-        <motion.div
-          animate={{ opacity: open ? 0 : 1 }}
-          transition={{ duration: 0.15 }}
-          style={{ pointerEvents: open ? "none" : "auto" }}
-          className="absolute inset-0 flex items-center justify-between px-4 h-12"
-        >
-          <Link href="/" className="flex items-center">
-            <span className="text-[10px] sm:text-[11px] font-semibold tracking-wide text-white">
+        <div ref={contentRef} className="pb-1">
+          {/* Header row — one logo, one button, same size/position in both states */}
+          <div className="flex items-center justify-between px-4 h-12">
+            <Link href="/" className="text-sm font-semibold tracking-wide text-white">
               MONO<span className="text-orange-500">KO</span>
-            </span>
-          </Link>
-
-          <button
-            aria-label="Open Menu"
-            onClick={() => setOpen(true)}
-            className="flex items-center justify-center h-8 w-8 rounded-md bg-white text-black transition hover:scale-105"
-          >
-            <Menu size={16} />
-          </button>
-        </motion.div>
-
-        {/* Panel — always in normal flow (so its real height is measurable),
-            visible only when open. Its height drives `panelHeight` above. */}
-        <motion.div
-          ref={panelRef}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: open ? 1 : 0 }}
-          transition={{ duration: 0.2, delay: open ? 0.1 : 0 }}
-          style={{ pointerEvents: open ? "auto" : "none" }}
-          className="p-5"
-        >
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-white text-xl font-semibold">
-              MONO<span className="text-orange-500">KO</span>
-            </h2>
+            </Link>
 
             <button
-              aria-label="Close Menu"
-              onClick={() => setOpen(false)}
-              className="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-black transition hover:scale-105"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+              onClick={() => setOpen((o) => !o)}
+              className="flex items-center justify-center h-8 w-8 rounded-[10px] bg-white text-black transition hover:scale-105"
             >
-              <X size={18} />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={open ? "close" : "menu"}
+                  initial={{ opacity: 0, rotate: -90, scale: 0.6 }}
+                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
+                  transition={{ duration: 0.15 }}
+                  className="flex"
+                >
+                  {open ? <X size={16} /> : <Menu size={16} />}
+                </motion.span>
+              </AnimatePresence>
             </button>
           </div>
 
+          {/* Links — chips hug their text, aligned with the logo's left edge */}
           <motion.div
             variants={listVariants}
             initial="hidden"
             animate={open ? "show" : "hidden"}
-            className="flex flex-col items-start gap-3"
+            aria-hidden={!open}
+            style={{ pointerEvents: open ? "auto" : "none" }}
+            className="grid w-fit gap-2 mx-4 mt-2 mb-4"
           >
             {menuItems.map((item) => (
-              <motion.div key={item.title} variants={itemVariants} className="w-[165px] sm:w-[190px]">
+              <motion.div key={item.title} variants={itemVariants}>
                 <Link
                   href={item.href}
+                  tabIndex={open ? 0 : -1}
                   onClick={() => setOpen(false)}
-                  className="block bg-white text-black px-4 sm:px-5 py-1.5 rounded-xl text-base font-medium text-left transition hover:scale-[1.02] active:scale-[0.98]"
+                  className="block bg-white text-black px-4 py-1.5 rounded-[10px] text-sm font-medium transition hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {item.title}
                 </Link>
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
     </header>
   );

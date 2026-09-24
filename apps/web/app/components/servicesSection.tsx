@@ -37,7 +37,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="bg-[#F4F1ED] px-5 md:px-16 pt-14 md:pt-20 scroll-mt-24">
+    <section id="services" className="bg-[#F7F3EF] px-5 md:px-16 pt-14 md:pt-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-[32px] md:text-[48px] font-semibold uppercase leading-none">
           Build A Brand

@@ -81,7 +81,7 @@ const steps = [
 export default function AIAutomationPage() {
   return (
     <main className="bg-[#F3F1EF] text-black">
-      <div className="mx-auto max-w-7xl px-5 py-12 md:px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-5 pt-24 pb-6 md:px-8 lg:px-12 md:pb-8">
         {/* Breadcrumb */}
         <div className="mb-16 text-sm md:text-base">
           <span className="text-neutral-500">HOME</span>
@@ -115,7 +115,7 @@ export default function AIAutomationPage() {
         </section>
 
         {/* Services */}
-        <section className="mt-28">
+        <section className="mt-6 md:mt-8">
           <div className="mb-14 text-center">
             <h2 className="text-3xl font-medium text-neutral-500 md:text-5xl">
               CORE AUTOMATION SERVICES
@@ -154,7 +154,7 @@ export default function AIAutomationPage() {
         </section>
 
         {/* Testimonials */}
-        <section className="mt-28 bg-[#ECECEC] py-20">
+        <section className="mt-6 md:mt-8 bg-[#ECECEC] py-20">
           <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
             <h2 className="mb-14 text-center text-3xl font-medium text-neutral-500 md:text-5xl">
               WHAT CLIENTS SAY
@@ -183,7 +183,7 @@ export default function AIAutomationPage() {
         </section>
 
         {/* Process */}
-        <section className="py-28">
+        <section className="pt-6 pb-6 md:pt-8 md:pb-8">
           <div className="grid gap-20 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <h2 className="text-5xl font-medium leading-tight md:text-6xl">

@@ -90,14 +90,14 @@ export default function WebsiteDevelopmentPage() {
     <main className="bg-[#f6f4ef]">
       {/* HERO */}
 
-      <section className="max-w-6xl mx-auto px-5 lg:px-0 pt-20 pb-10">
+      <section className="max-w-6xl mx-auto px-5 lg:px-0 pt-24 pb-10">
         <div className="text-sm font-medium uppercase">
           <span className="text-neutral-500">HOME / </span>
           <span className="text-orange-500">UI/UX</span>
         </div>
 
-        <div className="mt-10 flex flex-col lg:flex-row justify-between gap-10">
-          <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+        <div className="mt-10 flex flex-col lg:flex-row justify-between gap-10 lg:items-end">
+          <h1 className="text-5xl lg:text-7xl font-bold leading-none">
             DESIGN THAT
             <br />
             <span className="text-orange-500">
@@ -105,7 +105,7 @@ export default function WebsiteDevelopmentPage() {
             </span>
           </h1>
 
-          <div className="max-w-md text-neutral-600 leading-8 font-bold">
+          <div className="max-w-md text-base uppercase leading-relaxed text-black font-semibold">
             <p>
               WE DESIGN THOUGHFUL DIGITAL
             </p>

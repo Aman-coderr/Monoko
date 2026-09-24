@@ -144,20 +144,19 @@ function MarqueeRow({
               key={index}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.25 }}
-              className="group relative h-48 w-72 shrink-0 overflow-hidden rounded-2xl md:h-64 md:w-96"
+              className="group relative shrink-0"
             >
               <Image
                 src={image}
                 alt={project.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
+                width={0}
+                height={0}
+                sizes="(max-width: 768px) 40vw, 28vw"
+                className="h-48 w-auto rounded-2xl object-contain transition-transform duration-700 group-hover:scale-110 md:h-64"
               />
             </motion.div>
           ))}
         </div>
-
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-neutral-200 to-transparent md:w-28" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-neutral-200 to-transparent md:w-28" />
       </div>
     </div>
   );
@@ -166,10 +165,10 @@ function MarqueeRow({
 export default function BrandIdentityPage() {
   return (
     <main className="bg-[#f5f2ed] min-h-screen overflow-hidden">
-      <section className="mx-auto max-w-7xl px-5 pt-20 md:px-10">
+      <section className="mx-auto max-w-7xl px-5 pt-24 md:px-10">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
-            Home / Brand Identity
+            Home / Brand Iden<span className="text-orange-500">tity</span>
           </p>
 
           <h1 className="mt-4 text-4xl font-medium md:text-6xl">
@@ -178,7 +177,7 @@ export default function BrandIdentityPage() {
         </div>
       </section>
 
-      <section className="mx-auto space-y-12 px-3 py-16 sm:px-4 md:space-y-16 md:px-5 md:py-20">
+      <section className="mx-auto space-y-6 px-3 pt-6 pb-6 sm:px-4 md:space-y-8 md:px-5 md:pt-8 md:pb-8">
         {projects.map((project, index) => (
           <MarqueeRow
             key={project.id}

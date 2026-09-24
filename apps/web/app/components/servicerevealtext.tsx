@@ -61,7 +61,7 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[300vh] w-full bg-[#f6efed]"
+      className="relative h-[300vh] w-full bg-[#F7F3EF]"
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col justify-center gap-8 px-4 sm:px-10 lg:flex-row lg:items-center lg:gap-0 lg:px-16">

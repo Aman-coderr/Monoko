@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <main
       ref={containerRef}
-      className="min-h-screen bg-white"
+      className="min-h-screen bg-[#F7F3EF]"
     >
       {/* HERO */}
       <div className="h-screen flex items-center justify-center overflow-hidden">

@@ -39,7 +39,7 @@ export default function RevealText() {
 
   return (
     <section ref={sectionRef} className="relative h-[200vh]">
-      <div className="sticky top-0 flex h-screen items-center bg-white overflow-hidden">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="max-w-3xl px-6 sm:px-10 mx-auto text-left">
           <p className="text-[clamp(24px,5vw,52px)] font-bold leading-[1.3] tracking-tight">
             {words.map((word, i) => {
