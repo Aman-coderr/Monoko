@@ -1,30 +1,15 @@
 import Image from "next/image";
+import PageHero from "../components/PageHero";
 import { websiteDevelopmentData as data } from "./data";
 
 export default function WebsiteDevelopmentPage() {
   return (
     <main className="bg-[#f3f1ef] text-black">
-      <div className="mx-auto max-w-7xl px-5 pt-24 pb-6 lg:px-10 md:pb-8">
-        {/* Breadcrumb */}
-        <div className="mb-10 text-sm md:text-base">
-          <span className="text-gray-500">{data.breadcrumb.parent}</span>
-          <span className="mx-2">/</span>
-          <span className="font-medium text-orange-500">
-            {data.breadcrumb.current}
-          </span>
-        </div>
-
-        {/* Hero */}
-        <section className="grid gap-10 lg:grid-cols-2 lg:items-end">
-          <h1 className="max-w-2xl text-4xl font-semibold leading-none md:text-6xl">
-            {data.hero.title}
-          </h1>
-
-          <p className="max-w-md text-base uppercase leading-relaxed text-black font-semibold lg:justify-self-end">
-            {data.hero.description}
-          </p>
-        </section>
-
+      <PageHero
+        current={data.breadcrumb.current}
+        title={data.hero.title}
+        description={data.hero.description}
+      >
         {/* Process */}
         <section className="mt-6 md:mt-8">
           <h2 className="mb-14 text-center text-2xl font-medium text-gray-500 md:text-4xl">
@@ -81,7 +66,7 @@ export default function WebsiteDevelopmentPage() {
             ))}
           </div>
         </section>
-      </div>
+      </PageHero>
     </main>
   );
 }

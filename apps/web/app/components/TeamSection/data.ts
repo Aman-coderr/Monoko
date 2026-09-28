@@ -6,6 +6,7 @@ export interface Member {
   image: string;
   left: string;
   right: string;
+  rightMore: string;
 }
 
 export const members: Member[] = [
@@ -19,6 +20,8 @@ export const members: Member[] = [
       "I'm Pratik Prasad, a graphic designer and co-founder of Monoko, based in India, helping brands create impactful visual identities and modern digital experiences.",
     right:
       "I specialize in graphic design, branding, social media design and website UI design, creating clean, modern visuals.",
+    rightMore:
+      "I've worked with businesses across various industries, helping brands grow through thoughtful design and engaging digital experiences.",
   },
 
   {
@@ -31,5 +34,7 @@ export const members: Member[] = [
       "I’m Ravi, a brand strategist and co-founder of Monoko, based in India, helping businesses build strong brand identities, define clear positioning, and create meaningful connections with their audience.",
     right:
       "I specialize in brand strategy, brand positioning, marketing strategy, and business growth, helping brands communicate with clarity and stand out in competitive markets.",
+    rightMore:
+      "I've worked with businesses across various industries, helping brands grow through clear messaging and meaningful connections with their audience.",
   },
 ];

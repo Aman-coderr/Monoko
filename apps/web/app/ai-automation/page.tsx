@@ -5,6 +5,7 @@ import {
   MessageSquare,
   Workflow,
 } from "lucide-react";
+import PageHero from "../components/PageHero";
 
 const services = [
   {
@@ -80,40 +81,39 @@ const steps = [
 
 export default function AIAutomationPage() {
   return (
-    <main className="bg-[#F3F1EF] text-black">
-      <div className="mx-auto max-w-7xl px-5 pt-24 pb-6 md:px-8 lg:px-12 md:pb-8">
-        {/* Breadcrumb */}
-        <div className="mb-16 text-sm md:text-base">
-          <span className="text-neutral-500">HOME</span>
-          <span className="mx-2">/</span>
-          <span className="text-[#FF5A00]">AI AUTOMATION</span>
-        </div>
-
-        {/* Hero */}
-        <section className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h1 className="text-5xl font-medium leading-none sm:text-6xl lg:text-7xl">
-              <span className="block text-[#FF5A00]">BUILD AI</span>
-              <span className="block">SYSTEMS THAT</span>
-              <span className="block">CALL, CHAT, AND</span>
-              <span className="block text-[#FF5A00]">CONVERT.</span>
-            </h1>
-          </div>
-
-          <div className="flex flex-col items-start lg:items-end">
+    <main className="bg-[#f3f1ef] text-black">
+      <PageHero
+        current="AI AUTOMATION"
+        layoutClassName="lg:grid-cols-[1.3fr_0.7fr]"
+        titleWidthClassName="max-w-none"
+        right={
+          <div className="flex flex-col items-start lg:items-end lg:pb-2">
             <p className="max-w-lg text-base leading-relaxed text-neutral-700 lg:text-right">
               Stop losing leads to slow response times. I design custom AI
               voice agents and automation workflows that replace manual
               follow-ups and scale your operations instantly.
             </p>
 
-            <button className="mt-8 flex items-center gap-3 rounded-full border border-black px-5 py-3 text-sm transition hover:bg-black hover:text-white">
+            <button className="mt-6 flex items-center gap-3 rounded-full border border-black px-5 py-3 text-sm transition hover:bg-black hover:text-white">
               CONTACT US
               <ArrowUpRight size={16} />
             </button>
           </div>
-        </section>
+        }
+        title={
+          <>
+            <span className="block">
+              <span className="text-orange-500">BUILD AI</span> SYSTEMS
+            </span>
 
+            <span className="block">THAT CALL, CHAT</span>
+
+            <span className="block">
+              AND <span className="text-orange-500">CONVERT.</span>
+            </span>
+          </>
+        }
+      >
         {/* Services */}
         <section className="mt-6 md:mt-8">
           <div className="mb-14 text-center">
@@ -134,9 +134,9 @@ export default function AIAutomationPage() {
               return (
                 <div
                   key={service.title}
-                  className="rounded-3xl border border-neutral-200 bg-[#F3F1EF] p-6"
+                  className="rounded-3xl border border-neutral-200 bg-[#f3f1ef] p-6"
                 >
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-[#FF5A00] text-white">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-orange-500 text-white">
                     <Icon size={26} />
                   </div>
 
@@ -189,7 +189,7 @@ export default function AIAutomationPage() {
               <h2 className="text-5xl font-medium leading-tight md:text-6xl">
                 HOW I BUILD
                 <br />
-                <span className="text-[#FF5A00]">YOUR SYSTEM</span>
+                <span className="text-orange-500">YOUR SYSTEM</span>
               </h2>
 
               <p className="mt-8 max-w-md text-lg text-neutral-700">
@@ -212,7 +212,7 @@ export default function AIAutomationPage() {
                     key={step.number}
                     className="relative flex gap-6"
                   >
-                    <div className="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#FF5A00] text-lg font-semibold text-white">
+                    <div className="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-lg font-semibold text-white">
                       {step.number}
                     </div>
 
@@ -226,12 +226,12 @@ export default function AIAutomationPage() {
                       </p>
                     </div>
                   </div>
-                ))}
+              ))}
               </div>
             </div>
           </div>
         </section>
-      </div>
+      </PageHero>
     </main>
   );
 }

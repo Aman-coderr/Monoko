@@ -63,18 +63,18 @@ export default function ServicesSection() {
       ref={sectionRef}
       className="relative h-[300vh] w-full bg-[#F7F3EF]"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col justify-center gap-8 px-4 sm:px-10 lg:flex-row lg:items-center lg:gap-0 lg:px-16">
+      <div className="sticky top-0 h-[100svh] w-full overflow-hidden sm:h-screen">
+        <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col px-4 pb-5 pt-20 sm:px-10 sm:pb-6 sm:pt-24 lg:flex-row lg:items-center lg:justify-center lg:gap-0 lg:px-16 lg:py-0">
 
           {/* TEXT — top on phone/tablet, left on desktop */}
           <div className="relative w-full lg:flex lg:w-[50%] lg:items-center lg:justify-end lg:self-stretch lg:pr-[8%]">
-            <p className="mb-4 whitespace-nowrap text-[clamp(11px,3vw,22px)] font-medium uppercase leading-[1.2] tracking-[-0.01em] text-[#22201e] lg:absolute lg:left-0 lg:top-[10%] lg:mb-0 lg:text-[clamp(14px,1.75vw,32px)]">
+            <p className="mb-3 whitespace-nowrap text-[clamp(12px,3.7vw,14px)] font-medium uppercase leading-[1.2] tracking-[-0.01em] text-[#22201e] sm:mb-4 sm:text-[clamp(11px,3vw,22px)] lg:absolute lg:inset-x-0 lg:top-24 lg:mb-0 lg:whitespace-normal lg:px-4 text-center lg:text-[clamp(14px,1.75vw,32px)]">
               Designing experiences that help brands
               <br />
               grow through
             </p>
 
-            <div className="flex flex-col items-start gap-1 sm:gap-2 lg:items-end">
+            <div className="flex flex-col items-center gap-1 sm:gap-2 lg:items-end">
               {services.map((s, i) => (
                 <motion.h2
                   key={s.label}
@@ -84,7 +84,7 @@ export default function ServicesSection() {
                     scale: i === active ? 1 : 0.86,
                   }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="origin-left whitespace-nowrap text-[clamp(24px,7vw,54px)] font-semibold uppercase leading-[1.1] tracking-[-0.04em] lg:origin-right lg:text-[clamp(32px,4.2vw,72px)]"
+                  className="origin-center whitespace-nowrap text-[clamp(24px,9.5vw,44px)] font-semibold uppercase leading-[1.1] tracking-[-0.04em] sm:text-[clamp(24px,7vw,54px)] lg:origin-right lg:text-[clamp(32px,4.2vw,72px)]"
                 >
                   {s.label}
                 </motion.h2>
@@ -92,9 +92,12 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          {/* IMAGE — below text on phone/tablet, right on desktop */}
+          {/* Spacer 1 (phone/tablet only) */}
+          <div className="min-h-4 flex-1 lg:hidden" aria-hidden="true" />
+
+          {/* IMAGE — taller on phone, original ratio from sm up */}
           <div className="relative w-full lg:w-[50%]">
-            <div className="relative aspect-[1.35/1] w-full overflow-hidden rounded-[14px] bg-[#fcec67] sm:rounded-[24px] lg:rounded-[28px]">
+            <div className="relative aspect-[4/5] max-h-[48svh] w-full overflow-hidden rounded-[14px] bg-[#fcec67] sm:aspect-[1.35/1] sm:max-h-none sm:rounded-[24px] lg:rounded-[28px]">
               {services.map((s, i) => (
                 <div
                   key={s.label}
@@ -112,6 +115,9 @@ export default function ServicesSection() {
               />
             </div>
           </div>
+
+          {/* Spacer 2 (phone/tablet only) */}
+          <div className="min-h-4 flex-1 lg:hidden" aria-hidden="true" />
 
         </div>
       </div>

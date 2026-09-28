@@ -27,6 +27,9 @@ const itemVariants: Variants = {
 const HEADER_HEIGHT = 48;
 const PILL_RADIUS = 12;
 const PANEL_RADIUS = 16;
+const BUTTON_INSET = 8;
+const BUTTON_PILL_RADIUS = PILL_RADIUS - BUTTON_INSET;
+const BUTTON_PANEL_RADIUS = PANEL_RADIUS - BUTTON_INSET;
 const SPRING = { type: "spring", stiffness: 300, damping: 32, mass: 0.6 } as const;
 
 export default function Navbar() {
@@ -34,8 +37,6 @@ export default function Navbar() {
   const [fullHeight, setFullHeight] = useState(HEADER_HEIGHT);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  // Content (header + links) is always mounted, so we can measure its full
-  // height at any time. ResizeObserver keeps it correct across breakpoints.
   useLayoutEffect(() => {
     const el = contentRef.current;
     if (!el) return;
@@ -53,23 +54,26 @@ export default function Navbar() {
         animate={{
           height: open ? fullHeight : HEADER_HEIGHT,
           borderRadius: open ? PANEL_RADIUS : PILL_RADIUS,
-          // Close: wait for the links to fade out, then collapse.
           transition: open ? SPRING : { ...SPRING, delay: 0.12 },
         }}
         className="w-[75%] lg:w-[330px] bg-black overflow-hidden"
       >
         <div ref={contentRef} className="pb-1">
-          {/* Header row — one logo, one button, same size/position in both states */}
           <div className="flex items-center justify-between px-4 h-12">
             <Link href="/" className="text-sm font-semibold tracking-wide text-white">
               MONO<span className="text-orange-500">KO</span>
             </Link>
 
-            <button
+            <motion.button
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((o) => !o)}
-              className="flex items-center justify-center h-8 w-8 rounded-[10px] bg-white text-black transition hover:scale-105"
+              initial={{ borderRadius: BUTTON_PILL_RADIUS }}
+              animate={{
+                borderRadius: open ? BUTTON_PANEL_RADIUS : BUTTON_PILL_RADIUS,
+                transition: open ? SPRING : { ...SPRING, delay: 0.12 },
+              }}
+              className="flex items-center justify-center h-8 w-8 bg-white text-black transition hover:scale-105"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -83,7 +87,7 @@ export default function Navbar() {
                   {open ? <X size={16} /> : <Menu size={16} />}
                 </motion.span>
               </AnimatePresence>
-            </button>
+            </motion.button>
           </div>
 
           {/* Links — chips hug their text, aligned with the logo's left edge */}

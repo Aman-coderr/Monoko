@@ -7,6 +7,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import PageHero from "../components/PageHero";
 import { processSteps } from "./data";
 
 function DesktopCard({
@@ -87,37 +88,22 @@ export default function WebsiteDevelopmentPage() {
   });
 
   return (
-    <main className="bg-[#f6f4ef]">
+    <main className="bg-[#f3f1ef]">
       {/* HERO */}
 
-      <section className="max-w-6xl mx-auto px-5 lg:px-0 pt-24 pb-10">
-        <div className="text-sm font-medium uppercase">
-          <span className="text-neutral-500">HOME / </span>
-          <span className="text-orange-500">UI/UX</span>
-        </div>
-
-        <div className="mt-10 flex flex-col lg:flex-row justify-between gap-10 lg:items-end">
-          <h1 className="text-5xl lg:text-7xl font-bold leading-none">
+      <PageHero
+        current="UI/UX"
+        contentClassName="pb-8"
+        breadcrumbClassName="mb-8"
+        description="We design thoughtful digital experiences that look great, work seamlessly and deliver results"
+        title={
+          <>
             DESIGN THAT
             <br />
-            <span className="text-orange-500">
-              WORKS
-            </span>
-          </h1>
-
-          <div className="max-w-md text-base uppercase leading-relaxed text-black font-semibold">
-            <p>
-              WE DESIGN THOUGHFUL DIGITAL
-            </p>
-            <p>
-              EXPERIENCES THAT LOOK GREAT, WORK
-            </p>
-            <p>
-              SEAMLESSLY AND DELIVER RESULTS
-            </p>
-          </div>
-        </div>
-      </section>
+            <span className="text-orange-500">WORKS</span>
+          </>
+        }
+      />
 
       {/* DESKTOP STACKING ANIMATION */}
 

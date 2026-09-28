@@ -35,15 +35,15 @@ export default function Home() {
       className="min-h-screen bg-[#F7F3EF]"
     >
       {/* HERO */}
-      <div className="h-screen flex items-center justify-center overflow-hidden">
+      <div className="h-svh flex items-center justify-center overflow-hidden">
         <motion.div
           style={{
             width,
             borderRadius,
           }}
-          className="h-screen bg-orange-600 flex flex-col items-center justify-center text-center p-6 overflow-hidden"
+          className="h-svh bg-orange-600 flex flex-col items-center justify-center text-center p-4 sm:p-6 overflow-hidden"
         >
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tighter uppercase leading-none mb-6 sm:mb-8">
+          <h1 className="text-[2.5rem] min-[375px]:text-[3rem] min-[480px]:text-[3.875rem] sm:text-[4.25rem] md:text-[6rem] xl:text-[6.25rem] 2xl:text-[6.875rem] short-landscape:text-[4.5rem] font-extrabold tracking-tighter uppercase leading-none mb-6 min-[480px]:mb-8 min-[768px]:mb-10 lg:mb-12">
             <span className="text-zinc-900">
               Forward
             </span>
@@ -53,6 +53,8 @@ export default function Home() {
             <span className="text-zinc-900">
               Through{" "}
             </span>
+
+            <br className="lg:hidden" />
 
             <span className="text-white">
               Digital
@@ -65,7 +67,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="text-[10px] sm:text-xs md:text-sm font-bold tracking-wider text-zinc-900 uppercase">
+          <p className="text-[13px] min-[360px]:text-[14px] min-[375px]:text-base min-[480px]:text-xl leading-tight font-bold tracking-wider text-zinc-900 uppercase">
             We design your brand without limits, for a fixed price
           </p>
         </motion.div>

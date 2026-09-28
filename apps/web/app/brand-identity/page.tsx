@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useAnimationFrame, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import PageHero from "../components/PageHero";
 
 const projects = [
   {
@@ -164,20 +165,14 @@ function MarqueeRow({
 
 export default function BrandIdentityPage() {
   return (
-    <main className="bg-[#f5f2ed] min-h-screen overflow-hidden">
-      <section className="mx-auto max-w-7xl px-5 pt-24 md:px-10">
-        <div>
-          <p className="text-xs uppercase tracking-[0.25em] text-neutral-500">
-            Home / Brand Iden<span className="text-orange-500">tity</span>
-          </p>
+    <main className="bg-[#f3f1ef] min-h-screen overflow-hidden">
+      <PageHero
+        current="BRAND IDENTITY"
+        title="Brand Identity"
+        breadcrumbClassName="mb-6 md:mb-8"
+      />
 
-          <h1 className="mt-4 text-4xl font-medium md:text-6xl">
-            Brand Identity
-          </h1>
-        </div>
-      </section>
-
-      <section className="mx-auto space-y-6 px-3 pt-6 pb-6 sm:px-4 md:space-y-8 md:px-5 md:pt-8 md:pb-8">
+      <section className="mx-auto space-y-6 px-3 pb-6 sm:px-4 md:space-y-8 md:px-5 md:pb-8">
         {projects.map((project, index) => (
           <MarqueeRow
             key={project.id}

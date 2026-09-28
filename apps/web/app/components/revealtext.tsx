@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, type MotionValue } from "framer-motion
 import { useRef } from "react";
 
 const paragraph =
-  "We Create Experiences that People Remember and build brands they never forget";
+  "We create experiences that people remember, build brands they never forget, and turn ideas into meaningful experiences.";
 
 const words = paragraph.split(" ");
 
