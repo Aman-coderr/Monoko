@@ -65,11 +65,11 @@ export default function ServicesSection() {
       className="relative h-[300vh] w-full bg-[#F7F3EF]"
     >
       <div className="sticky top-0 h-[100svh] w-full overflow-hidden sm:h-screen">
-        <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col px-4 pb-5 pt-20 sm:px-10 sm:pb-6 sm:pt-24 lg:flex-row lg:items-center lg:justify-center lg:gap-0 lg:px-16 lg:py-0">
+        <div className="mx-auto flex h-full w-full max-w-[1500px] flex-col px-4 pb-5 pt-28 sm:px-10 sm:pb-6 sm:pt-36 lg:flex-row lg:items-center lg:justify-center lg:gap-0 lg:px-16 lg:pb-0 lg:pt-20">
 
           {/* TEXT — top on phone/tablet, left on desktop */}
           <div className="relative w-full lg:flex lg:w-[50%] lg:items-center lg:justify-end lg:self-stretch lg:pr-[8%]">
-            <p className="mb-3 whitespace-nowrap text-[clamp(12px,3.7vw,14px)] font-medium uppercase leading-[1.2] tracking-[-0.01em] text-[#22201e] sm:mb-4 sm:text-[clamp(11px,3vw,22px)] lg:absolute lg:inset-x-0 lg:top-24 lg:mb-0 lg:whitespace-normal lg:px-4 text-center lg:text-[clamp(14px,1.75vw,32px)]">
+            <p className="mb-3 whitespace-nowrap text-[clamp(12px,3.7vw,14px)] font-medium uppercase leading-[1.2] tracking-[-0.01em] text-[#22201e] sm:mb-4 sm:text-[clamp(11px,3vw,22px)] lg:absolute lg:inset-x-0 lg:top-14 lg:mb-0 lg:whitespace-normal lg:px-4 text-center lg:text-[clamp(14px,1.75vw,32px)]">
               Designing experiences that help brands
               <br />
               grow through
@@ -96,7 +96,7 @@ export default function ServicesSection() {
           </div>
 
           {/* Spacer 1 (phone/tablet only) */}
-          <div className="min-h-4 flex-1 lg:hidden" aria-hidden="true" />
+          <div className="min-h-6 flex-[1.5] sm:min-h-8 lg:hidden" aria-hidden="true" />
 
           {/* IMAGE — taller on phone, original ratio from sm up */}
           <div className="relative w-full lg:w-[50%]">

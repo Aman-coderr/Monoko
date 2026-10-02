@@ -114,7 +114,7 @@ export default function WebsiteDevelopmentPage() {
           height: `${processSteps.length * 100}vh`,
         }}
       >
-        <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="sticky top-5 h-screen overflow-hidden">
           {processSteps.map((step, index) => (
             <DesktopCard
               key={step.id}

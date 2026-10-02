@@ -168,20 +168,20 @@ export default function BrandIdentityPage() {
     <main className="bg-[#f3f1ef] min-h-screen overflow-hidden">
       <PageHero
         current="BRAND IDENTITY"
-        title="Brand Identity"
-        breadcrumbClassName="mb-6 md:mb-8"
-      />
-
-      <section className="mx-auto space-y-6 px-3 pb-6 sm:px-4 md:space-y-8 md:px-5 md:pb-8">
-        {projects.map((project, index) => (
-          <MarqueeRow
-            key={project.id}
-            project={project}
-            direction={index % 2 === 0 ? "left" : "right"}
-            speed={index % 2 === 0 ? 50 : 70}
-          />
-        ))}
-      </section>
+        title="IDENTITY, DESIGNED WITH INTENT"
+        description="WE CREATE MEANINGFUL BRAND IDENTITIES THAT BRING CLARITY TO YOUR VISION AND CONSISTENCY TO EVERY EXPRESSION OF YOUR BRAND"
+      >
+        <section className="mt-8 space-y-6 md:space-y-8">
+          {projects.map((project, index) => (
+            <MarqueeRow
+              key={project.id}
+              project={project}
+              direction={index % 2 === 0 ? "left" : "right"}
+              speed={index % 2 === 0 ? 50 : 70}
+            />
+          ))}
+        </section>
+      </PageHero>
     </main>
   );
 }

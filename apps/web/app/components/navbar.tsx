@@ -53,7 +53,7 @@ export default function Navbar() {
         className="w-[75%] lg:w-[330px] bg-black overflow-hidden"
       >
         <div ref={contentRef} className="pb-1">
-          <div className="flex items-center justify-between px-4 h-12">
+          <div className="flex items-center justify-between pl-4 pr-2 h-12">
             <Link href="/" className="text-sm font-semibold tracking-wide text-white">
               MONO<span className="text-orange-500">KO</span>
             </Link>
