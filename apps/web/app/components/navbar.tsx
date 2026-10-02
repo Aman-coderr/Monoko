@@ -4,13 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-
-const menuItems = [
-  { title: "Brand Identity", href: "/brand-identity" },
-  { title: "UI/UX", href: "/ui-ux" },
-  { title: "Web Development", href: "/web-development" },
-  { title: "AI Automation", href: "/ai-automation" },
-];
+import { menuItems } from "./menuItems";
 
 // Open: links slide in from the left, top to bottom (after height starts growing).
 // Close: links fade out fast, bottom to top, before the box collapses.

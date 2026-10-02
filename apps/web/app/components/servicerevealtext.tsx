@@ -7,15 +7,16 @@ import {
   useScroll,
 } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import uiuxImage from "../../public/ui-ux-design-and-development-concepts-developers-interact-with-cutting-edge-virtual-screens.webp";
 import webImage from "../../public/web-development-word-cloud-concept-grey-background-88650624.webp";
 import brandImage from "../../public/Brand-Identity-Elements.webp";
 
 const services = [
-  { label: "UI/UX DESIGN", image: uiuxImage, alt: "UI UX Design" },
-  { label: "WEB DEVELOPMENT", image: webImage, alt: "Web Development" },
-  { label: "BRAND IDENTITY", image: brandImage, alt: "Brand Identity" },
+  { label: "UI/UX DESIGN", href: "/ui-ux", image: uiuxImage, alt: "UI UX Design" },
+  { label: "WEB DEVELOPMENT", href: "/web-development", image: webImage, alt: "Web Development" },
+  { label: "BRAND IDENTITY", href: "/brand-identity", image: brandImage, alt: "Brand Identity" },
 ];
 
 const EASE = [0.76, 0, 0.24, 1] as const;
@@ -86,7 +87,9 @@ export default function ServicesSection() {
                   transition={{ duration: 0.4, ease: "easeOut" }}
                   className="origin-center whitespace-nowrap text-[clamp(24px,9.5vw,44px)] font-semibold uppercase leading-[1.1] tracking-[-0.04em] sm:text-[clamp(24px,7vw,54px)] lg:origin-right lg:text-[clamp(32px,4.2vw,72px)]"
                 >
-                  {s.label}
+                  <Link href={s.href} className="block">
+                    {s.label}
+                  </Link>
                 </motion.h2>
               ))}
             </div>
