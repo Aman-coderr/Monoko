@@ -6,17 +6,38 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "framer-motion";
-import Image from "next/image";
+import { getImageProps } from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import uiuxImage from "../../public/ui-ux-design-and-development-concepts-developers-interact-with-cutting-edge-virtual-screens.webp";
-import webImage from "../../public/web-development-word-cloud-concept-grey-background-88650624.webp";
-import brandImage from "../../public/Brand-Identity-Elements.webp";
 
 const services = [
-  { label: "UI/UX DESIGN", href: "/ui-ux", image: uiuxImage, alt: "UI UX Design" },
-  { label: "WEB DEVELOPMENT", href: "/web-development", image: webImage, alt: "Web Development" },
-  { label: "BRAND IDENTITY", href: "/brand-identity", image: brandImage, alt: "Brand Identity" },
+  {
+    label: "UI/UX DESIGN",
+    href: "/ui-ux",
+    alt: "UI UX Design",
+    desktopImage:
+      "https://pub-efab5b3be1fd427297b4a94107b488d3.r2.dev/Service-Section/UI%20UX%20PC.png",
+    mobileImage:
+      "https://pub-efab5b3be1fd427297b4a94107b488d3.r2.dev/Service-Section/UI%20UX%20PHONE.png",
+  },
+  {
+    label: "WEB DEVELOPMENT",
+    href: "/web-development",
+    alt: "Web Development",
+    desktopImage:
+      "https://pub-efab5b3be1fd427297b4a94107b488d3.r2.dev/Service-Section/WEB%20DEV%20PC.png",
+    mobileImage:
+      "https://pub-efab5b3be1fd427297b4a94107b488d3.r2.dev/Service-Section/WEB%20DEV%20PHONE.png",
+  },
+  {
+    label: "BRAND IDENTITY",
+    href: "/brand-identity",
+    alt: "Brand Identity",
+    desktopImage:
+      "https://pub-efab5b3be1fd427297b4a94107b488d3.r2.dev/Service-Section/BRANDING%20PC.png",
+    mobileImage:
+      "https://pub-efab5b3be1fd427297b4a94107b488d3.r2.dev/Service-Section/BRANDING%20PHONE.png",
+  },
 ];
 
 const EASE = [0.76, 0, 0.24, 1] as const;
@@ -101,14 +122,34 @@ export default function ServicesSection() {
           {/* IMAGE — taller on phone, original ratio from sm up */}
           <div className="relative w-full lg:w-[50%]">
             <div className="relative aspect-[4/5] max-h-[48svh] w-full overflow-hidden rounded-[14px] bg-[#fcec67] sm:aspect-[1.35/1] sm:max-h-none sm:rounded-[24px] lg:rounded-[28px]">
-              {services.map((s, i) => (
-                <div
-                  key={s.label}
-                  className={`absolute inset-0 ${shown === i ? "opacity-100" : "opacity-0"}`}
-                >
-                  <Image src={s.image} alt={s.alt} fill className="object-cover" />
-                </div>
-              ))}
+              {services.map((s, i) => {
+                const common = {
+                  alt: s.alt,
+                  fill: true,
+                  className: "object-cover",
+                };
+                const { props: mobileProps } = getImageProps({
+                  ...common,
+                  src: s.mobileImage,
+                });
+                const { props: desktopProps } = getImageProps({
+                  ...common,
+                  src: s.desktopImage,
+                });
+                const desktopSrc = desktopProps.srcSet ?? desktopProps.src;
+
+                return (
+                  <div
+                    key={s.label}
+                    className={`absolute inset-0 ${shown === i ? "opacity-100" : "opacity-0"}`}
+                  >
+                    <picture>
+                      <source media="(min-width: 640px)" srcSet={desktopSrc} />
+                      <img {...mobileProps} alt={s.alt} />
+                    </picture>
+                  </div>
+                );
+              })}
 
               {/* YELLOW CURTAIN */}
               <motion.div
